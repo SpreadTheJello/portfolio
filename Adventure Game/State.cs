@@ -17,5 +17,4 @@ public class State : ScriptableObject
     {
         return nextStates;
     }
-    //test
 }
