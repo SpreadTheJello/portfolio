@@ -30,11 +30,15 @@ print(rank2_tensor.shape)
 print("\n")
 
 # changing tensor shape
-tensor1 = tf.ones([1,2,3]) # creates a tensor of shape [1,2,3] of ones
+tensor1 = tf.ones([1,2,3]) # creates a tensor of shape [1,2,3] of ones or .zeros for zeros
 tensor2 = tf.reshape(tensor1, [2,3,1]) # reshapes to shape [2,3,1]
 tensor3 = tf.reshape(tensor2, [3, -1]) # -1 will calculate the necessary dimension in that place
                                        # it would reshape it to [3,2]
+print("Tensor 1:")
 print(tensor1)
+print("Tensor 2:")
 print(tensor2)
+print("Tensor 3:")
 print(tensor3)
+
 
