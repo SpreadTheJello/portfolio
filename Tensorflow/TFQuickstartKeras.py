@@ -10,7 +10,7 @@ x_train, x_test = x_train / 255.0, x_test /255.0
 # builds Sequential model by stacking layers
 model = tf.keras.models.Sequential([
     tf.keras.layers.Flatten(input_shape=(28, 28)),
-    tf.keras.layers.Desnse(128, activiation='relu'),
+    tf.keras.layers.Dense(128, activiation='relu'),
     tf.keras.layers.Dropout(0.2),
     tf.keras.layers.Dense(10)
 ])
@@ -31,7 +31,7 @@ model.compile(ompimizer='adam',
             metrics=['accuracy'])
 
 # adjusts model parameters to minimize the loss
-model.fit(x_train, y=train, epochs=5)
+model.fit(x_train, y_train, epochs=5)
 
 # checks models performance and will return accuracy on the dataset
 model.evaluate(x_test, y_test, verbose=2)
