@@ -28,7 +28,8 @@ loss_fn(y_train[:1],predictions).numpy()
 
 model.compile(ompimizer='adam',
               loss=loss_fn,
-            metrics=['accuracy'])
+              metrics=['accuracy']
+             )
 
 # adjusts model parameters to minimize the loss
 model.fit(x_train, y_train, epochs=5)
