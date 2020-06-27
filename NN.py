@@ -93,12 +93,15 @@ z = mystery_flower[0] * w1 + mystery_flower[1] * w2 + b
 prediction = sigmoid(z)
 
 def solve(l, w):
+    phrases = ["I think it is ", "my guess is ", "my predictions show ", "the flowers color is "]
+    ri = np.random.randint(len(phrases))
+
     z = l * w1 + w * w2 + b
     pred = sigmoid(z)
     if pred < .5:
-        os.system("say blue")
+        os.system("say " + phrases[ri] + "blue")
     else:
-        os.system("say red")
+        os.system("say " + phrases[ri] + "red")
 
 print("Hello!")
 length = float(input("Enter a length: "))
