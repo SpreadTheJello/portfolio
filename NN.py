@@ -18,26 +18,40 @@ data = [[3,   1.5, 1],
 # this is the flower with the missing color
 mystery_flower = [4.5, 1]
 
-def NN(m1, m2, w1, w2, b):
-    z = m1 * w1 + m2 * w2 + b
-    return sigmoid(z)
+# neural network:
+#
+#    o      1 output: flower color
+#   / \     w1, w2, b
+#  o   o    2 inputs: length, width
+w1 = np.random.randn()
+w2 = np.random.randn()
+b = np.random.randn()
+
+
+
+# def NN(m1, m2, w1, w2, b):
+#     z = m1 * w1 + m2 * w2 + b
+#     return sigmoid(z)
 
 def sigmoid(x):
-    return 1/(1 + numpy.exp(-x))
+    return 1/(1 + np.exp(-x))
 
-def cost(b):
-    return (b - 4) ** 2
+T = np.linspace(-5, 5, 10)
+print(sigmoid(T))
 
-def num_slope(b):
-    h = 0.0001
-    return (cost(b+h) - cost(b))/h
+# def cost(b):
+#     return (b - 4) ** 2
 
-def slope(b):
-    return 2 * (b-4)
+# def num_slope(b):
+#     h = 0.0001
+#     return (cost(b+h) - cost(b))/h
 
-w1 = numpy.random.randn()
-w2 = numpy.random.randn()
-b = 8
-b = b - .1 * slope(b)
+# def slope(b):
+#     return 2 * (b-4)
 
-print(NN(3, 1.5, w1, w2, b))
+# w1 = numpy.random.randn()
+# w2 = numpy.random.randn()
+# b = 8
+# b = b - .1 * slope(b)
+
+# print(NN(3, 1.5, w1, w2, b))
