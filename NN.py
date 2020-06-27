@@ -28,7 +28,6 @@ w2 = np.random.randn()
 b = np.random.randn()
 
 
-
 # def NN(m1, m2, w1, w2, b):
 #     z = m1 * w1 + m2 * w2 + b
 #     return sigmoid(z)
@@ -36,8 +35,13 @@ b = np.random.randn()
 def sigmoid(x):
     return 1/(1 + np.exp(-x))
 
-T = np.linspace(-5, 5, 10)
-print(sigmoid(T))
+def sigmoid_deriv(x):
+    return sigmoid(x) * (1-sigmoid(x))
+
+X = np.linspace(-5, 5, 100)
+Y = sigmoid_deriv(X)
+plt.plot(X, Y)
+plt.show()
 
 # def cost(b):
 #     return (b - 4) ** 2
