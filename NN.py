@@ -27,6 +27,17 @@ w1 = np.random.randn()
 w2 = np.random.randn()
 b = np.random.randn()
 
+# scatter plot of data
+def scat_plot():
+    plt.axis([0, 6, 0, 4])
+    plt.grid()
+    for i in range(len(data)):
+        point = data[i]
+        color = 'r'
+        if point[2] == 0:
+            color = 'b'
+        plt.scatter(point[0], point[1], c=color)
+    plt.show()
 
 # def NN(m1, m2, w1, w2, b):
 #     z = m1 * w1 + m2 * w2 + b
@@ -38,10 +49,11 @@ def sigmoid(x):
 def sigmoid_deriv(x):
     return sigmoid(x) * (1-sigmoid(x))
 
-X = np.linspace(-5, 5, 100)
-Y = sigmoid_deriv(X)
-plt.plot(X, Y)
-plt.show()
+# training
+for i in range(10000):
+    rIndex = np.random.randint(len(data))
+    point = data[rIndex]
+
 
 # def cost(b):
 #     return (b - 4) ** 2
