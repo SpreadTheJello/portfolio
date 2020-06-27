@@ -2,6 +2,7 @@
 # However, one of those flowers has a missing color.
 # This NN will get to the closest probability for the color of the mystery flower.
 
+import os
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -85,23 +86,22 @@ for i in range(50000):
             costSum += np.square(prediction - target)
         costs.append(costSum/len(data))
 
-plt.plot(costs)
-plt.show()
+# plt.plot(costs)
+# plt.show()
     
+z = mystery_flower[0] * w1 + mystery_flower[1] * w2 + b
+prediction = sigmoid(z)
 
-# def cost(b):
-#     return (b - 4) ** 2
+def solve(l, w):
+    z = l * w1 + w * w2 + b
+    pred = sigmoid(z)
+    if pred < .5:
+        os.system("say blue")
+    else:
+        os.system("say red")
 
-# def num_slope(b):
-#     h = 0.0001
-#     return (cost(b+h) - cost(b))/h
+print("Hello!")
+length = float(input("Enter a length: "))
+width = float(input("Enter a width: "))
+solve(length, width)
 
-# def slope(b):
-#     return 2 * (b-4)
-
-# w1 = numpy.random.randn()
-# w2 = numpy.random.randn()
-# b = 8
-# b = b - .1 * slope(b)
-
-# print(NN(3, 1.5, w1, w2, b))
