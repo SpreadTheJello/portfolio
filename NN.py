@@ -39,10 +39,6 @@ def scat_plot():
         plt.scatter(point[0], point[1], c=color)
     plt.show()
 
-# def NN(m1, m2, w1, w2, b):
-#     z = m1 * w1 + m2 * w2 + b
-#     return sigmoid(z)
-
 def sigmoid(x):
     return 1/(1 + np.exp(-x))
 
@@ -50,10 +46,48 @@ def sigmoid_deriv(x):
     return sigmoid(x) * (1-sigmoid(x))
 
 # training
-for i in range(10000):
+learnRate = 0.2
+costs = []
+
+for i in range(50000):
     rIndex = np.random.randint(len(data))
     point = data[rIndex]
 
+    z = point[0] * w1 + point[1] * w2 + b
+    prediction = sigmoid(z)
+
+    target = point[2]
+    cost = np.square(prediction - target)
+
+    deriv_costprediction = 2 * (prediction - target)
+    derivPrediction_derivZ = sigmoid_deriv(z)
+    derivZ_derivW1 = point[0]
+    derivZ_derivW2 = point[1]
+    derivZ_derivB = 1
+
+    derivCost_derivW1 = deriv_costprediction * derivPrediction_derivZ * derivZ_derivW1
+    derivCost_derivW2 = deriv_costprediction * derivPrediction_derivZ * derivZ_derivW2
+    derivCost_derivB = deriv_costprediction * derivPrediction_derivZ * derivZ_derivB
+
+    w1 = w1 - learnRate * derivCost_derivW1
+    w2 = w2 - learnRate * derivCost_derivW2
+    b = b - learnRate * derivCost_derivB
+    
+    if i % 100 == 0:
+        costSum = 0
+        for j in range(len(data)):
+            point = data[rIndex]
+
+            z = point[0] * w1 + point[1] * w2 + b
+            prediction = sigmoid(z)
+
+            target = point[2]
+            costSum += np.square(prediction - target)
+        costs.append(costSum/len(data))
+
+plt.plot(costs)
+plt.show()
+    
 
 # def cost(b):
 #     return (b - 4) ** 2
